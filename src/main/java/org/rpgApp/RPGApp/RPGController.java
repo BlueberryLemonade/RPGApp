@@ -13,4 +13,15 @@ public class RPGController {
     public String homePage(){
     return "home";
     }
+
+    @GetMapping("/game")
+    public String gamePage(){
+        return "game";
+    }
+
+    @GetMapping("/tools")
+    public String toolPage(){
+        return "tools";
+    }
+
 }

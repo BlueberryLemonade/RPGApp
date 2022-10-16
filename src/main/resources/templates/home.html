@@ -1,10 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
-  <title>RPG App: The App that is an RPG</title>
+  <title>RPG App</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
- <p>RPG App: The App in which there is an RPG</p>
+<p>RPG App: The App in which there is an RPG</p>
+<form action="#" th:action="@{/game}" method="get">
+ <p><input type="submit" value="New Game" /> </p>
+</form>
+<form action="#" th:action="@{/tools}" method="get">
+    <p><input type="submit" value="Dev Tools" /> </p>
+</form>
 </body>
 </html>
