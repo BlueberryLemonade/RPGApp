@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,5 +7,10 @@
 </head>
 <body>
 <p>Champ create</p>
+<form action="#" th:action="@{/greeting}" method="post">
+    <p>Id: <input type="text"  /></p>
+    <p>Message: <input type="text"  /></p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
 </body>
 </html>
