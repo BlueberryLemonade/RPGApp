@@ -7,9 +7,10 @@
 </head>
 <body>
 <p>Champ create</p>
-<form action="#" th:action="@{/greeting}" method="post">
-    <p>Id: <input type="text"  /></p>
-    <p>Message: <input type="text"  /></p>
+<form action="#" th:action="@{/createchampion}" th:object="${champion}" method="post">
+    <p>Id: <input type="text"  th:name="id" /></p>
+    <p>Name: <input type="text" th:name="name"   /></p>
+    <p>HP: <input type="text" th:name="hp"></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
 </body>
