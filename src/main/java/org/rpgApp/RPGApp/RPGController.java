@@ -24,4 +24,10 @@ public class RPGController {
         return "tools";
     }
 
+    @GetMapping("/createchampion")
+    public String createPage(){
+        return "createchampion";
+    }
+
+
 }

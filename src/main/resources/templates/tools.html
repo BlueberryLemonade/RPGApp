@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,5 +7,8 @@
 </head>
 <body>
   <p>THE TOOLS</p>
+  <form action="#" th:action="@{/createchampion}" method="get">
+      <p><input type="submit" value="Create champion" /> </p>
+  </form>
 </body>
 </html>
