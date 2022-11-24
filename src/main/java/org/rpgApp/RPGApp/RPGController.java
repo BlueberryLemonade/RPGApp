@@ -29,7 +29,6 @@ public class RPGController {
     return "home";
     }
 
-    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/champions")
     public ResponseEntity<List<Champion>> getChamps(){
         try{
