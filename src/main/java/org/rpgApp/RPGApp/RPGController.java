@@ -12,7 +12,7 @@ import org.rpgApp.RPGApp.Champion;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//test
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
