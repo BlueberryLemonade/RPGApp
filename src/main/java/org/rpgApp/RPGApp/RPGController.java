@@ -3,7 +3,6 @@ package org.rpgApp.RPGApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,9 @@ import org.rpgApp.RPGApp.Champion;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+@RequestMapping("/api")
 public class RPGController {
 
 
@@ -28,6 +29,7 @@ public class RPGController {
     return "home";
     }
 
+    @CrossOrigin(origins = "http://localhost:8080")
     @GetMapping("/champions")
     public ResponseEntity<List<Champion>> getChamps(){
         try{
