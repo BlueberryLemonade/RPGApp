@@ -1,0 +1,21 @@
+h3{
+    color:aqua;
+}
+
+.Monsters{
+    color: red;
+}
+
+p{
+    color:white;
+}
+
+.monChampContainer{
+    display:flex;
+     flex-direction:row;
+     padding: 10px;
+    }
+
+.Champions{
+    padding-left: 50%;
+}

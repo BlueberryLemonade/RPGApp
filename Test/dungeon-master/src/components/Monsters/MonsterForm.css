@@ -1,0 +1,26 @@
+.labelText {
+    text-align: left;
+    color:cyan;
+}
+
+.field {
+    align-self: right;
+}
+
+.nameField{
+    border-color: rgb(67, 233, 67);
+    background-color: white;
+}
+.strengthField{
+    border-color: rgb(67, 233, 67);
+    background-color: white;
+}
+
+.nameField.invalid {
+    border-color: rgb(202, 156, 156);
+    background-color:rgb(253, 253, 253);
+}
+.strengthField.invalid {
+    border-color: rgb(202, 156, 156);
+    background-color:rgb(253, 253, 253);
+}
