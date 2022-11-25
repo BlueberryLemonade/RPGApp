@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 
 const ChampionMenu = props => {
 
-  const [champions, setChampions] = useState(props.champions);
+  //const [champions, setChampions] = useState(props.champions);
 
+
+
+/*
   const deleteHandler = (championId) => {
 
     setChampions(prevChampions => {
@@ -15,13 +18,13 @@ const ChampionMenu = props => {
       return updatedChampions;
     })
   };
+*/
 
   const formAndList = () => {
       return (
         <div>
-          <ChampionForm onChampionAdded={addChampionHandler} />
-          <ChampionList champions={champions} onDeleteClick={deleteHandler} />
-          <button type='button' onClick={props.onSave(champions)} >Save Champions</button>
+          <ChampionForm  />
+          <ChampionList />
 
           <Link to="/"><button>Close Menu</button></Link>
         </div>
@@ -29,12 +32,7 @@ const ChampionMenu = props => {
     
   };
 
-  const addChampionHandler = (champion) => {
-
-    setChampions((prevChampions) => {
-      return [champion, ...prevChampions];
-    });
-  };
+  
 
   return (
     <div>
