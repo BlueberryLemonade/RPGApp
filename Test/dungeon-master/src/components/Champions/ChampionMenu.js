@@ -1,14 +1,13 @@
-import { useState } from "react";
 import ChampionList from "./ChampionList";
 import ChampionForm from "./ChampionForm";
 import { Link } from "react-router-dom";
 
-
 const ChampionMenu = props => {
 
-  //const [champions, setChampions] = useState(props.champions);
 
+  
 
+  
 
 /*
   const deleteHandler = (championId) => {
@@ -24,7 +23,7 @@ const ChampionMenu = props => {
       return (
         <div>
           <ChampionForm  />
-          <ChampionList />
+          <ChampionList  />
 
           <Link to="/"><button>Close Menu</button></Link>
         </div>

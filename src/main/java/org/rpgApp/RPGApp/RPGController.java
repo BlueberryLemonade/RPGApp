@@ -46,22 +46,25 @@ public class RPGController {
         }
     }
 
-    @GetMapping("/game")
-    public String gamePage(){
-        return "game";
+    @PostMapping("/champions")
+    public ResponseEntity<HttpStatus> addChamp(@RequestBody Champion champ){
+        try{
+            champRepo.save(champ);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/tools")
-    public String toolPage(){
-        return "tools";
+    @DeleteMapping("/champions/{id}")
+    public ResponseEntity<HttpStatus> deleteChamp(@PathVariable("id") int id){
+        try{
+            champRepo.deleteById(id);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
-    @GetMapping("/createchampion")
-    public String createPage(){
-        return "createchampion";
-    }
-
 
 
 }

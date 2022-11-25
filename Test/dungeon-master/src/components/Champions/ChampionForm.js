@@ -1,5 +1,6 @@
 import './ChampionForm.css';
-import { useEffect, useState, useRef } from 'react';
+import {  useState, useRef } from 'react';
+import axios from 'axios';
 
 const ChampionForm = (props) => {
 
@@ -10,7 +11,6 @@ const ChampionForm = (props) => {
 
     const ref = useRef();
 
-    useEffect(() => console.log(enteredName), [enteredName]);
 
 
     const nameChangeHandler = (event) => {
@@ -57,15 +57,24 @@ const ChampionForm = (props) => {
 
 
         const champion = {
+            hp: enteredStrength,
             name: enteredName,
-            strength: enteredStrength
         };
         setEnteredName("");
         setNameIsValid(false);
 
         setEnteredStrength("");
         setStrengthIsValid(false);
-        props.onChampionAdded(champion);
+        
+       
+                
+          axios({
+         method: 'post',
+                   url: 'http://localhost:8080/api/champions',
+              data: champion
+                })
+            
+    
 
     };
 
@@ -84,7 +93,7 @@ const ChampionForm = (props) => {
                     ></input>
                 </div>
                 <div>
-                    <label className='labelText'>Strength: </label>
+                    <label className='labelText'>HP: </label>
                     <input
                         ref={ref}
                         type='number'
