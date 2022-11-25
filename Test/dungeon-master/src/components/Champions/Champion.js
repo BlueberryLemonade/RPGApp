@@ -2,8 +2,26 @@ import './Champion.css';
 
 const Champion = (props) => {
 
-   const deleteHandler = () => {
-        props.onDeleteClick(props.name);
+   async deleteHandler = () => {
+
+    const fetchString = 'http://localhost:8080/champions/' + props.key;
+
+    try {
+        const response = await fetch(fetchString, {
+          method: "delete"
+        });
+      
+        if (!response.ok) {
+          const message = 'Error with Status Code: ' + response.status;
+          throw new Error(message);
+        }
+      
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log('Error: ' + err);
+      }
+      
     };
 
     return(
