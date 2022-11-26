@@ -1,6 +1,7 @@
 import './ChampionForm.css';
 import {  useState, useRef } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ChampionForm = (props) => {
 
@@ -73,13 +74,13 @@ const ChampionForm = (props) => {
                    url: 'http://localhost:8080/api/champions',
               data: champion
                 })
-            
-    
+               
 
     };
 
 
     return (
+        <div>
         <form onSubmit={verifier}>
             <div>
                 <h2>Champion Creation</h2>
@@ -106,6 +107,9 @@ const ChampionForm = (props) => {
             </div>
             <button type='submit' >Confirm</button>
         </form>
+                  <Link to="/Champions/"><button>Back</button></Link>
+                  </div>
+
     )
 };
 

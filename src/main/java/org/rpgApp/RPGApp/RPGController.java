@@ -12,6 +12,8 @@ import org.rpgApp.RPGApp.Champion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 //test
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -63,8 +65,28 @@ public class RPGController {
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping("/champions/{id}")
+    public ResponseEntity<Champion> updateEmployee(@PathVariable int id,@RequestBody Champion champDetails) {
+        Optional<Champion> updatedChampCheck = champRepo.findById(id);
+
+        if(updatedChampCheck.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Champion updatedChamp = updatedChampCheck.get();
+                
+        updatedChamp.setName(champDetails.getName());
+        updatedChamp.setHp(champDetails.getHp());
+
+        champRepo.save(updatedChamp);
+
+
+
+        return ResponseEntity.ok(updatedChamp);
+    }
 
 }

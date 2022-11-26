@@ -1,12 +1,6 @@
 import './App.css';
-import OptionsMenu from './components/Options/OptionsMenu';
 import {Route, Routes} from 'react-router-dom';
-import MonsterMenu from './components/Monsters/MonsterMenu';
-import CampaignMenu from './components/Campaigns/CampaignMenu';
-import ArenaMenu from './components/Arena/ArenaMenu';
-import ChampionMenu from './components/Champions/ChampionMenu';
-import DiceMenu from './components/Dice/DiceMenu';
-import CampaignCreator from './components/Campaigns/CampaignCreator';
+import Navigator from './components/Navigator/Navigator';
 
 
 
@@ -19,16 +13,13 @@ const App = () => {
   return (
     <div className="App-header">    
       <h1>DungeonMaster-er</h1>
+      <div className='="mid-box'>
       <Routes>
-      <Route path="/" element={<OptionsMenu/>} />
-      <Route path="/Monsters" element={<MonsterMenu />} />
-      <Route path="/Champions" element={<ChampionMenu />} />
-      <Route path="/Dice" element={<DiceMenu />} />
-      <Route path="/Arena" element={<ArenaMenu  />} />
-      <Route path="/Campaigns/" element={<CampaignMenu  /> } />
-      <Route path="/Campaigns/Create" element={<CampaignCreator  />} />
+      <Route path="/*" element={<Navigator/>} />
+      
 
       </Routes>
+      </div>
     </div>
   );
 };
