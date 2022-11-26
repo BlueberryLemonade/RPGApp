@@ -1,6 +1,5 @@
 import './OptionsMenu.css';
 
-
 import { Link } from 'react-router-dom';
 
 
@@ -23,7 +22,9 @@ const OptionsMenu = () => {
 
     return (
         <div>
+           
             {Options()}
+           
         </div>
     )
 };

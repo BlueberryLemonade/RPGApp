@@ -22,9 +22,9 @@ const ChampionMenu = props => {
   const formAndList = () => {
       return (
         <div>
-          <ChampionForm  />
           <ChampionList  />
 
+          
           <Link to="/"><button>Close Menu</button></Link>
         </div>
       );
