@@ -1,17 +1,44 @@
 import './ChampionForm.css';
-import {  useState, useRef } from 'react';
+import {  useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 const ChampionEdit = (props) => {
 
-   
-    const [enteredName, setEnteredName] = useState(props.name);
-    const [enteredStrength, setEnteredStrength] = useState(props.hp);
+
+    const [enteredName, setEnteredName] = useState("");
+    const [enteredStrength, setEnteredStrength] = useState("");
     const [nameIsValid, setNameIsValid] = useState(false);
     const [strengthIsValid, setStrengthIsValid] = useState(false);
 
-    const ref = useRef();
+    const location = useLocation();
+    const { id } = location.state;
+
+   
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        setLoading(true);
+    
+        async function fetchData() {
+        const request = await axios.get('http://localhost:8080/api/champions/' + id);
+        console.log(request);
+        setLoading(false);
+        setEnteredName(request.data.name);
+        setEnteredStrength(request.data.hp);
+       
+        return request;
+    } 
+    fetchData();
+    }, []);
+    
+    
+if(loading){
+    return <p>Loading...</p>;
+}
+   
+ 
+   
 
     
 
@@ -58,10 +85,20 @@ const ChampionEdit = (props) => {
         //Checks to see if the entered strength and name are empty, if so, it sets them to invalid
 
 
-        const champion = {
-            hp: enteredStrength,
+        const updatedChampion = {
             name: enteredName,
+            hp: enteredStrength,
+           
         };
+
+    
+
+            axios({
+                method: 'put',
+                          url: 'http://localhost:8080/api/champions/' + id,
+                     data: updatedChampion
+                       })
+
         setEnteredName("");
         setNameIsValid(false);
 
@@ -69,12 +106,9 @@ const ChampionEdit = (props) => {
         setStrengthIsValid(false);
         
        
+           
                 
-          axios({
-         method: 'put',
-                   url: 'http://localhost:8080/api/champions/' + props.id,
-              data: champion
-                })
+        
                
 
     };
@@ -97,7 +131,6 @@ const ChampionEdit = (props) => {
                 <div>
                     <label className='labelText'>HP: </label>
                     <input
-                        ref={ref}
                         type='number'
                         className={`strengthField ${!strengthIsValid ? 'invalid' : ''}`}
                         min="0"

@@ -1,5 +1,6 @@
 import './Champion.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Champion = (props) => {
 
@@ -11,9 +12,10 @@ const Champion = (props) => {
         })}
 
     return(
-        <div className='champion' onClick={deleteHandler}>
-    <p>Champion Name: {props.name}    |    HP: {props.hp}</p>
-    <button>Edit</button>
+        <div className='champion' >
+         <p>Champion Name: {props.name}    |    HP: {props.hp}</p>
+          <Link to="/Champions/edit" state={{ id: props.id}}><button>Edit</button></Link>
+          <button onClick={deleteHandler}>Delete</button>
     
     </div>
     )
