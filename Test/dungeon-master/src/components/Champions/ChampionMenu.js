@@ -24,7 +24,7 @@ const ChampionMenu = props => {
         <div>
           <ChampionList  />
 
-          
+          <Link to="/Champions/add"><button>Add Champion</button></Link>
           <Link to="/"><button>Close Menu</button></Link>
         </div>
       );

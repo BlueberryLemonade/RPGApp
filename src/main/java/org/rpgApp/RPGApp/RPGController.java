@@ -48,6 +48,24 @@ public class RPGController {
         }
     }
 
+    @GetMapping("/champions/{id}")
+    public ResponseEntity<Champion> getChampById(@PathVariable("id") int id){
+        try{
+
+            Optional<Champion> champCheck= champRepo.findById(id);
+
+            if(champCheck.isEmpty()){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+
+            Champion selectedChamp = champCheck.get();
+
+            return new ResponseEntity<>(selectedChamp, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @PostMapping("/champions")
     public ResponseEntity<HttpStatus> addChamp(@RequestBody Champion champ){
         try{

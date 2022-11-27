@@ -21,6 +21,7 @@ const Navigator = () => {
   <Route path="/Arena" element={<ArenaMenu  />} />
   <Route path="/Campaigns/" element={<CampaignMenu  /> } />
   <Route path="/Campaigns/Create" element={<CampaignCreator  />} />
+  
   </Routes>
     )
 };
