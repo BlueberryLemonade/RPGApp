@@ -10,7 +10,7 @@ const ChampionList = (props) => {
   const [champions, setChampions] = useState([]);
   const [loading, setLoading] = useState(false);
 
-
+  
 
   useEffect(() => {
     setLoading(true);
@@ -46,12 +46,14 @@ if(loading){
     return (
         <ul>
             {champions.map((champion) => (
+               
                 <Champion
                     key={champion.id}
                     id={champion.id}
                     name={champion.name}
                     hp={champion.hp}
                 />
+                
             ))}
         </ul>
     );

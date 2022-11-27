@@ -13,6 +13,7 @@ const Champion = (props) => {
     return(
         <div className='champion' onClick={deleteHandler}>
     <p>Champion Name: {props.name}    |    HP: {props.hp}</p>
+    <button>Edit</button>
     
     </div>
     )
