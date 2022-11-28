@@ -7,8 +7,8 @@ import javax.persistence.*;
 public class Champion {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private int id;
+
     private String name;
     private int hp;
 

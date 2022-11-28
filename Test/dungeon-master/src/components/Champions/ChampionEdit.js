@@ -8,8 +8,8 @@ const ChampionEdit = (props) => {
 
     const [enteredName, setEnteredName] = useState("");
     const [enteredStrength, setEnteredStrength] = useState("");
-    const [nameIsValid, setNameIsValid] = useState(false);
-    const [strengthIsValid, setStrengthIsValid] = useState(false);
+    const [nameIsValid, setNameIsValid] = useState(true);
+    const [strengthIsValid, setStrengthIsValid] = useState(true);
 
     const location = useLocation();
     const { id } = location.state;
@@ -91,7 +91,7 @@ if(loading){
            
         };
 
-    
+        
 
             axios({
                 method: 'put',
