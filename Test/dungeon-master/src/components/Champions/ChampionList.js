@@ -5,39 +5,12 @@ import axios from 'axios';
 const ChampionList = (props) => {
 
 
- const fetchURL = 'http://localhost:8080/api/champions/';
-
-  const [champions, setChampions] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  
-
-  useEffect(() => {
-    setLoading(true);
-
-    async function fetchData() {
-    const request = await axios.get(fetchURL);
-    console.log(request);
-    setLoading(false);
-
-    setChampions(request.data);
-    return request;
-} 
-fetchData();
-}, []);
 
 
 
 
 
-if(loading){
-    return <p>Loading...</p>
-}
-
-
-
-
-    if (champions.length === 0) {
+    if (props.champions.length === 0) {
         return <h2>No Champions in database</h2>
     }
 
@@ -45,7 +18,7 @@ if(loading){
 
     return (
         <ul>
-            {champions.map((champion) => (
+            {props.champions.map((champion) => (
                
                 <Champion
                     key={champion.id}
