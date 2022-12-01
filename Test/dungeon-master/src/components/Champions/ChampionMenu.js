@@ -23,11 +23,13 @@ const ChampionMenu = props => {
     setLoading(true);
 
     async function fetchData() {
-    const request = await axios.get(fetchURL);
-    console.log(request);
+    const request = await axios.get(fetchURL)
+    .then(response => {
+      setChampions(response.data);
+    }
+    );
     setLoading(false);
-
-    setChampions(request.data);
+   
     return request;
 } 
 fetchData();

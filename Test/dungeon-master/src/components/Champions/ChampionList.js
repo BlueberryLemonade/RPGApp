@@ -1,6 +1,4 @@
 import Champion from "./Champion";
-import { useState, useEffect } from "react";
-import axios from 'axios';
 
 const ChampionList = (props) => {
 
