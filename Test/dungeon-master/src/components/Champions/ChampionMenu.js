@@ -12,10 +12,8 @@ const ChampionMenu = props => {
   const [champions, setChampions] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const [updated, setUpdated] = useState(false);
   
-
-
-
 
 
   
@@ -26,16 +24,25 @@ const ChampionMenu = props => {
     const request = await axios.get(fetchURL)
     .then(response => {
       setChampions(response.data);
+    
     }
     );
+
     setLoading(false);
-   
+    setUpdated(false);
     return request;
 } 
 fetchData();
-}, []);
+}, [updated]);
 
 
+
+const submitHandler = () => {
+
+ 
+  setUpdated(true);
+
+}
   
 
 /*
@@ -59,8 +66,8 @@ if(loading){
 
       return (
         <div>
-          <ChampionList champions={champions} />
-          <ChampionForm />
+          <ChampionList champions={champions} onChange={submitHandler}/>
+          <ChampionForm onChange={submitHandler} />
           <Link to="/Champions/add"><button>Add Champion</button></Link>
           <Link to="/"><button>Close Menu</button></Link>
         </div>

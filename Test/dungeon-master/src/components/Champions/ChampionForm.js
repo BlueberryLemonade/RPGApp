@@ -73,7 +73,9 @@ const ChampionForm = (props) => {
          method: 'post',
                    url: 'http://localhost:8080/api/champions',
               data: champion
-                })
+                });
+
+        props.onChange(event);
                
 
     };

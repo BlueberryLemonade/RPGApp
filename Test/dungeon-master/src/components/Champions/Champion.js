@@ -9,7 +9,11 @@ const Champion = (props) => {
         axios.delete("http://localhost:8080/api/champions/" + props.id,)
         .catch(error => {
             console.log(error.response)
-        })}
+        });
+
+        props.onChange();
+    
+    }
 
     return(
         <div className='champion' >

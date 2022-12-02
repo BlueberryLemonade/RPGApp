@@ -19,6 +19,7 @@ const ChampionList = (props) => {
             {props.champions.map((champion) => (
                
                 <Champion
+                    onChange={props.onChange}
                     key={champion.id}
                     id={champion.id}
                     name={champion.name}
