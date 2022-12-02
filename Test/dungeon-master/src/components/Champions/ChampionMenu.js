@@ -37,7 +37,7 @@ fetchData();
 
 
 
-const submitHandler = () => {
+const changeHandler = () => {
 
  
   setUpdated(true);
@@ -66,8 +66,8 @@ if(loading){
 
       return (
         <div>
-          <ChampionList champions={champions} onChange={submitHandler}/>
-          <ChampionForm onChange={submitHandler} />
+          <ChampionList champions={champions} onChange={changeHandler}/>
+          <ChampionForm onChange={changeHandler} />
           <Link to="/Champions/add"><button>Add Champion</button></Link>
           <Link to="/"><button>Close Menu</button></Link>
         </div>
