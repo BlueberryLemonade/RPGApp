@@ -7,6 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import org.rpgApp.RPGApp.Monster;
+import org.rpgApp.RPGApp.MonsterRepository;
+
 import org.rpgApp.RPGApp.ChampRepo;
 import org.rpgApp.RPGApp.Champion;
 
@@ -23,6 +26,9 @@ public class RPGController {
 
     @Autowired
     ChampRepo champRepo;
+
+    @Autowired
+    MonsterRepository monsterRepo;
 
     @GetMapping("/champions")
     public ResponseEntity<List<Champion>> getChamps(){
@@ -98,6 +104,24 @@ public class RPGController {
 
 
         return ResponseEntity.ok(updatedChamp);
+    }
+
+
+    @GetMapping("/monsters")
+    public ResponseEntity<List<Monster>> getMonsters(){
+        try{
+            List<Monster> monsterList = new ArrayList<Monster>();
+
+            monsterRepo.findAll().forEach(monsterList::add);
+
+            if(monsterList.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(monsterList, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

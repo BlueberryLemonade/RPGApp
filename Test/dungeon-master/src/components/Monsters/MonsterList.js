@@ -8,22 +8,22 @@ const MonsterList = (props) => {
 
 
 
-    if (props.champions.length === 0) {
-        return <h2>No Champions in database</h2>
+    if (props.monsters.length === 0) {
+        return <h2>No Monsters in database</h2>
     }
 
 
 
     return (
         <ul>
-            {props.champions.map((champion) => (
+            {props.monsters.map((monster) => (
                
                 <Champion
                     onChange={props.onChange}
-                    key={champion.id}
-                    id={champion.id}
-                    name={champion.name}
-                    hp={champion.hp}
+                    key={monster.id}
+                    id={monster.id}
+                    name={monster.name}
+                    hp={monster.hp}
                 />
                 
             ))}

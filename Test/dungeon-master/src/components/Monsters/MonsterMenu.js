@@ -1,15 +1,15 @@
-import ChampionList from "./MonsterList";
-import ChampionForm from "./MonsterForm";
+import MonsterForm from "./MonsterForm";
+import MonsterList from "./MonsterList";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const MonsterMenu = props => {
 
-  const fetchURL = 'http://localhost:8080/api/champions/';
+  const fetchURL = 'http://localhost:8080/api/monsters/';
 
 
-  const [champions, setChampions] = useState([]);
+  const [monsters, setMonsters] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [updated, setUpdated] = useState(false);
@@ -23,7 +23,7 @@ const MonsterMenu = props => {
     async function fetchData() {
     const request = await axios.get(fetchURL)
     .then(response => {
-      setChampions(response.data);
+      setMonsters(response.data);
     
     }
     );
@@ -66,8 +66,8 @@ if(loading){
 
       return (
         <div>
-          <ChampionList champions={champions} onChange={changeHandler}/>
-          <ChampionForm onChange={changeHandler} />
+          <MonsterList monsters={monsters} onChange={changeHandler}/>
+          <MonsterForm onChange={changeHandler} />
           <Link to="/Champions/add"><button>Add Champion</button></Link>
           <Link to="/"><button>Close Menu</button></Link>
         </div>
