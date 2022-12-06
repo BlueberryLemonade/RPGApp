@@ -66,7 +66,6 @@ if(loading){
         <div>
           <MonsterList onChange={changeHandler}/>
           <MonsterForm onChange={changeHandler} />
-          <Link to="/Champions/add"><button>Add Champion</button></Link>
           <Link to="/"><button>Close Menu</button></Link>
         </div>
       );

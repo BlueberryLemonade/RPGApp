@@ -17,7 +17,7 @@ const Monster = (props) => {
     return(
         <div className='champion' >
          <p>Monster Name: {props.name}    |    HP: {props.hp}</p>
-          <Link to="/Champions/edit" state={{ id: props.id}}><button>Edit</button></Link>
+          <Link to="/Monsters/edit" state={{ id: props.id}}><button>Edit</button></Link>
           <button onClick={deleteHandler}>Delete</button>
     
     </div>

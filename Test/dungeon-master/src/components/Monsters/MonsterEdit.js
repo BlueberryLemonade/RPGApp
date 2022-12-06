@@ -106,11 +106,11 @@ const MonsterEdit = (props) => {
 
         axios({
             method: 'put',
-            url: 'http://localhost:8080/api/champions/' + id,
+            url: 'http://localhost:8080/api/monsters/' + id,
             data: updatedChampion
         })
 
-        navigate("/Champions");
+        navigate("/Monsters");
 
 
 
@@ -151,7 +151,7 @@ const MonsterEdit = (props) => {
                 </div>
                 <button type='submit' >Confirm</button>
             </form>
-            <Link to="/Champions/"><button>Back</button></Link>
+            <Link to="/Monsters/"><button>Back</button></Link>
         </div>
 
     )

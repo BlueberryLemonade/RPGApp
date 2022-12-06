@@ -68,7 +68,6 @@ if(loading){
         <div>
           <ChampionList champions={champions} onChange={changeHandler}/>
           <ChampionForm onChange={changeHandler} />
-          <Link to="/Champions/add"><button>Add Champion</button></Link>
           <Link to="/"><button>Close Menu</button></Link>
         </div>
       );
