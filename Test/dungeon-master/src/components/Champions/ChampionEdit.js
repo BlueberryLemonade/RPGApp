@@ -7,7 +7,11 @@ const ChampionEdit = (props) => {
 
 
     const [enteredName, setEnteredName] = useState("");
-    const [enteredStrength, setEnteredStrength] = useState("");
+    
+    //Currently using let so I can turn the number into a string later for verification purposes, 
+    //need to find a more elegant solution
+    let [enteredHP, setEnteredHP] = useState("");
+
     const [nameIsValid, setNameIsValid] = useState(true);
     const [strengthIsValid, setStrengthIsValid] = useState(true);
 
@@ -22,10 +26,9 @@ const ChampionEdit = (props) => {
     
         async function fetchData() {
         const request = await axios.get('http://localhost:8080/api/champions/' + id);
-        console.log(request);
         setLoading(false);
         setEnteredName(request.data.name);
-        setEnteredStrength(request.data.hp);
+        setEnteredHP(request.data.hp);
        
         return request;
     } 
@@ -53,14 +56,14 @@ if(loading){
         return;
     };
 
-    const strengthChangeHandler = (event) => {
+    const HPChangeHandler = (event) => {
         const holder = event.target.value;
         if (holder.trim().length > 0 && holder <= 9999) {
             setStrengthIsValid(true);
         } else {
             setStrengthIsValid(false);
         }
-        setEnteredStrength(holder);
+        setEnteredHP(holder);
         return;
     };
 
@@ -70,7 +73,9 @@ if(loading){
             setNameIsValid(true);
         }
 
-        if (enteredStrength.trim().length > 0) {
+        enteredHP = enteredHP.toString();
+
+        if (enteredHP.trim().length > 0) {
             setStrengthIsValid(true);
         }
 
@@ -87,7 +92,7 @@ if(loading){
 
         const updatedChampion = {
             name: enteredName,
-            hp: enteredStrength,
+            hp: enteredHP,
            
         };
 
@@ -102,7 +107,7 @@ if(loading){
         setEnteredName("");
         setNameIsValid(false);
 
-        setEnteredStrength("");
+        setEnteredHP("");
         setStrengthIsValid(false);
         
        
@@ -135,8 +140,8 @@ if(loading){
                         className={`strengthField ${!strengthIsValid ? 'invalid' : ''}`}
                         min="0"
                         max="9999"
-                        value={enteredStrength}
-                        onChange={strengthChangeHandler}></input>
+                        value={enteredHP}
+                        onChange={HPChangeHandler}></input>
                 </div>
             </div>
             <button type='submit' >Confirm</button>
