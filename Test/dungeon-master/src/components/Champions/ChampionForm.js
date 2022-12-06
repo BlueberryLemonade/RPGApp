@@ -75,7 +75,7 @@ const ChampionForm = (props) => {
               data: champion
                 });
 
-        props.onChange(event);
+        props.onChange();
                
 
     };
@@ -83,7 +83,7 @@ const ChampionForm = (props) => {
 
     return (
         <div>
-        <form onSubmit={verifier}>
+        <form className="champForm" onSubmit={verifier}>
             <div>
                 <h2>Champion Creation</h2>
                 <div >
@@ -109,7 +109,6 @@ const ChampionForm = (props) => {
             </div>
             <button type='submit' >Confirm</button>
         </form>
-                  <Link to="/Champions/"><button>Back</button></Link>
                   </div>
 
     )

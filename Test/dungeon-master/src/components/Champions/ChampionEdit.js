@@ -74,9 +74,11 @@ const ChampionEdit = (props) => {
     const verifier = (event) => {
         event.preventDefault();
         if (enteredName.trim().length > 0) {
+            setEnteredName(enteredName.trim());
             setNameIsValid(true);
         }
 
+        
         enteredHP = enteredHP.toString();
 
         if (enteredHP.trim().length > 0) {
