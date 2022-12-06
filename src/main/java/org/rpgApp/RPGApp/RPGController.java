@@ -24,13 +24,6 @@ public class RPGController {
     @Autowired
     ChampRepo champRepo;
 
-
-
-    @GetMapping("/home")
-    public String homePage(Model model){
-    return "home";
-    }
-
     @GetMapping("/champions")
     public ResponseEntity<List<Champion>> getChamps(){
         try{

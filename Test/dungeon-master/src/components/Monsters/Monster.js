@@ -1,14 +1,24 @@
-import './Monster.css';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Monster = (props) => {
 
-   const deleteHandler = () => {
-        props.onDeleteClick(props.name);
-    };
+
+    const deleteHandler = () => {
+        axios.delete("http://localhost:8080/api/champions/" + props.id,)
+        .catch(error => {
+            console.log(error.response)
+        });
+
+        props.onChange();
+    
+    }
 
     return(
-        <div className='monster' onClick={deleteHandler}>
-    <p>Name: {props.name}    |    Strength: {props.strength}</p>
+        <div className='champion' >
+         <p>Monster Name: {props.name}    |    HP: {props.hp}</p>
+          <Link to="/Champions/edit" state={{ id: props.id}}><button>Edit</button></Link>
+          <button onClick={deleteHandler}>Delete</button>
     
     </div>
     )

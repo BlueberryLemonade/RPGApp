@@ -1,5 +1,6 @@
-import './MonsterForm.css';
-import { useState, useRef } from 'react';
+import {  useState, useRef } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const MonsterForm = (props) => {
 
@@ -9,6 +10,8 @@ const MonsterForm = (props) => {
     const [strengthIsValid, setStrengthIsValid] = useState(false);
 
     const ref = useRef();
+
+
 
     const nameChangeHandler = (event) => {
         const holder = event.target.value;
@@ -51,25 +54,39 @@ const MonsterForm = (props) => {
     const submitHandler = (event) => {
         event.preventDefault();
         //Checks to see if the entered strength and name are empty, if so, it sets them to invalid
-        const monster = {
+
+
+        const champion = {
+            hp: enteredStrength,
             name: enteredName,
-            strength: enteredStrength
         };
         setEnteredName("");
         setNameIsValid(false);
+
         setEnteredStrength("");
         setStrengthIsValid(false);
-        props.onMonsterAdded(monster);
+        
+       
+                
+          axios({
+         method: 'post',
+                   url: 'http://localhost:8080/api/champions',
+              data: champion
+                });
+
+        props.onChange();
+               
 
     };
 
 
     return (
-        <form onSubmit={verifier}>
+        <div>
+        <form className="champForm" onSubmit={verifier}>
             <div>
                 <h2>Monster Creation</h2>
                 <div >
-                    <label className='labelText'>Name: </label>
+                    <label className='labelText'>Monster Name: </label>
                     <input
                         className={`nameField ${!nameIsValid ? 'invalid' : ''}`}
                         type='text'
@@ -78,7 +95,7 @@ const MonsterForm = (props) => {
                     ></input>
                 </div>
                 <div>
-                    <label className='labelText'>Strength: </label>
+                    <label className='labelText'>HP: </label>
                     <input
                         ref={ref}
                         type='number'
@@ -91,6 +108,8 @@ const MonsterForm = (props) => {
             </div>
             <button type='submit' >Confirm</button>
         </form>
+                  </div>
+
     )
 };
 

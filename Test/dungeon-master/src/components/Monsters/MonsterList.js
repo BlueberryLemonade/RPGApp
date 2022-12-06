@@ -1,19 +1,31 @@
-import Monster from "./Monster";
-const MonsterList = props => {
+import Champion from "./Monster";
 
-    if (props.monsters.length === 0) {
-        return <h2>No Monsters in database</h2>
+const MonsterList = (props) => {
+
+
+
+
+
+
+
+    if (props.champions.length === 0) {
+        return <h2>No Champions in database</h2>
     }
+
+
 
     return (
         <ul>
-            {props.monsters.map((monster) => (
-                <Monster
-                    onDeleteClick={props.onDeleteClick}
-                    key={monster.name}
-                    name={monster.name}
-                    strength={monster.strength}
+            {props.champions.map((champion) => (
+               
+                <Champion
+                    onChange={props.onChange}
+                    key={champion.id}
+                    id={champion.id}
+                    name={champion.name}
+                    hp={champion.hp}
                 />
+                
             ))}
         </ul>
     );
