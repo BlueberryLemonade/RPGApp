@@ -1,9 +1,7 @@
 import './ArenaMenu.css';
-import ArenaList from './ArenaList';
 import { useState } from 'react';
-import FightPit from './FightPit';
 import { Link } from 'react-router-dom';
-
+import MonsterList from '../Monsters/MonsterList';
 const ArenaMenu = props => {
  
 
@@ -22,7 +20,8 @@ const ArenaMenu = props => {
 
 
         <div className="monChampContainer">
-          <p>Stuff</p>
+          <h1>Monsters: </h1>
+          <MonsterList />
         </div>
 
         <Link to="/"><button>Close Arena</button></Link>

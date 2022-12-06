@@ -9,7 +9,6 @@ const MonsterMenu = props => {
   const fetchURL = 'http://localhost:8080/api/monsters/';
 
 
-  const [monsters, setMonsters] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [updated, setUpdated] = useState(false);
@@ -23,7 +22,6 @@ const MonsterMenu = props => {
     async function fetchData() {
     const request = await axios.get(fetchURL)
     .then(response => {
-      setMonsters(response.data);
     
     }
     );
@@ -66,7 +64,7 @@ if(loading){
 
       return (
         <div>
-          <MonsterList monsters={monsters} onChange={changeHandler}/>
+          <MonsterList onChange={changeHandler}/>
           <MonsterForm onChange={changeHandler} />
           <Link to="/Champions/add"><button>Add Champion</button></Link>
           <Link to="/"><button>Close Menu</button></Link>
