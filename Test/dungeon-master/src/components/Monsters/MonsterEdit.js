@@ -29,7 +29,7 @@ const MonsterEdit = (props) => {
         setLoading(true);
 
         async function fetchData() {
-            const request = await axios.get('http://localhost:8080/api/champions/' + id);
+            const request = await axios.get('http://localhost:8080/api/monsters/' + id);
             setLoading(false);
             setEnteredName(request.data.name);
             setEnteredHP(request.data.hp);

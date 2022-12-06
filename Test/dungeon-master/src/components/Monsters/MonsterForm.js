@@ -70,7 +70,7 @@ const MonsterForm = (props) => {
                 
           axios({
          method: 'post',
-                   url: 'http://localhost:8080/api/champions',
+                   url: 'http://localhost:8080/api/monsters',
               data: champion
                 });
 

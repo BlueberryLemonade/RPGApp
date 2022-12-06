@@ -5,7 +5,7 @@ const Monster = (props) => {
 
 
     const deleteHandler = () => {
-        axios.delete("http://localhost:8080/api/champions/" + props.id,)
+        axios.delete("http://localhost:8080/api/monsters/" + props.id,)
         .catch(error => {
             console.log(error.response)
         });
