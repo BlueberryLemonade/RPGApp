@@ -107,21 +107,6 @@ public class RPGController {
     }
 
 
-    @GetMapping("/monsters")
-    public ResponseEntity<List<Monster>> getMonsters(){
-        try{
-            List<Monster> monsterList = new ArrayList<Monster>();
 
-            monsterRepo.findAll().forEach(monsterList::add);
-
-            if(monsterList.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-            return new ResponseEntity<>(monsterList, HttpStatus.OK);
-        } catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 
 }
