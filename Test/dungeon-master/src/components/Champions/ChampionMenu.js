@@ -64,9 +64,16 @@ if(loading){
   return <p>Loading...</p>
 }
 
+const selectionHandler = (selection) =>{
+
+  console.log("SELECTION: " + selection);
+}
+
+
+
       return (
         <div>
-          <ChampionList champions={champions} onChange={changeHandler}/>
+          <ChampionList champions={champions} onChange={changeHandler} onSelected={selectionHandler}/>
           <ChampionForm onChange={changeHandler} />
           <Link to="/"><button>Close Menu</button></Link>
         </div>

@@ -48,6 +48,7 @@ if (loading) {
             {champions.map((champion) => (
                
                 <Champion
+                    onClick={props.onSelected}
                     onChange={props.onChange}
                     key={champion.id}
                     id={champion.id}
