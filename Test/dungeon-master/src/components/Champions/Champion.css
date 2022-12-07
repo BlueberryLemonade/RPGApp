@@ -1,9 +1,21 @@
 .champion {
     border: 10px;
-    border-color: aqua;
-    
+    background-color: cadetblue;    
 }
 
 .selectedChamp {
-    background-color: aquamarine;
+    background-color: rgb(154, 182, 207);
+}
+
+.champData {
+    color: gold;
+    margin-bottom: 4px;
+    margin-left: 5px;
+    
+}
+
+.buttons {
+    color: rgb(25, 2, 5);
+    margin-bottom: 4px;
+    margin-left: 5px;
 }
