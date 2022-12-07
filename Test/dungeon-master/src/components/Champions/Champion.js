@@ -1,6 +1,6 @@
 import './Champion.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+//import axios from 'axios';
+//import { Link } from 'react-router-dom';
 
 const Champion = (props) => {
 
@@ -8,7 +8,7 @@ const Champion = (props) => {
   
     const clickHandler = () => {
 
-
+        console.log(props.selected)
         props.onClick(props.id);
     }
 
@@ -22,14 +22,11 @@ const Champion = (props) => {
         props.onChange();
     
     }
-    */
+  */  
 
     return(
-        <div className='champion' onClick={clickHandler}>
+        <div className={props.selected ? "selectedChamp" : "champion"} onClick={clickHandler}>
          <p>Champion Name: {props.name}    |    HP: {props.hp}</p>
-          <Link to="/Champions/edit" state={{ id: props.id}}></Link>
-          
-    
     </div>
     )
 };

@@ -3,3 +3,7 @@
     border-color: aqua;
     
 }
+
+.selectedChamp {
+    background-color: aquamarine;
+}

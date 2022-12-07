@@ -1,10 +1,10 @@
 import Champion from "./Champion";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 const ChampionList = (props) => {
 
     const fetchURL = 'http://localhost:8080/api/champions/';
-
 
 
     const [champions, setChampions] = useState([]);
@@ -48,6 +48,7 @@ if (loading) {
             {champions.map((champion) => (
                
                 <Champion
+                    selected={champion.id === props.selection ? true : false}
                     onClick={props.onSelected}
                     onChange={props.onChange}
                     key={champion.id}

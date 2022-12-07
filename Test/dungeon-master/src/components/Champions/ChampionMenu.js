@@ -8,6 +8,7 @@ const ChampionMenu = props => {
 
   const fetchURL = 'http://localhost:8080/api/champions/';
 
+  const [selectedChampId, setSelectedChampId] = useState(""); 
 
   const [champions, setChampions] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -57,23 +58,24 @@ const changeHandler = () => {
 
   const formAndList = () => {
 
-    
+
 
 
 if(loading){
   return <p>Loading...</p>
 }
 
-const selectionHandler = (selection) =>{
+const selectionHandler = (selectionFromList) =>{
 
-  console.log("SELECTION: " + selection);
+  console.log("SELECTION: " + selectionFromList);
+  setSelectedChampId(selectionFromList);
 }
 
 
 
       return (
         <div>
-          <ChampionList champions={champions} onChange={changeHandler} onSelected={selectionHandler}/>
+          <ChampionList champions={champions} onChange={changeHandler} onSelected={selectionHandler} selection={selectedChampId}/>
           <ChampionForm onChange={changeHandler} />
           <Link to="/"><button>Close Menu</button></Link>
         </div>
