@@ -35,8 +35,18 @@ const Champion = (props) => {
         )
     }
 
+    if(props.onClick != null){
+        return(
+            <div className="champion" onClick={clickHandler}>
+             <p>Champion Name: {props.name}    |    HP: {props.hp}</p>
+        </div>
+        )
+    }
+
+
+
     return(
-        <div className="champion" onClick={clickHandler}>
+        <div className="champion" >
          <p>Champion Name: {props.name}    |    HP: {props.hp}</p>
     </div>
     )
