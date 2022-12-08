@@ -1,7 +1,7 @@
 import './ChampionForm.css';
-import {  useState, useRef } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 const ChampionForm = (props) => {
 
@@ -9,10 +9,6 @@ const ChampionForm = (props) => {
     const [enteredStrength, setEnteredStrength] = useState("");
     const [nameIsValid, setNameIsValid] = useState(false);
     const [strengthIsValid, setStrengthIsValid] = useState(false);
-
-    const ref = useRef();
-
-
 
     const nameChangeHandler = (event) => {
         const holder = event.target.value;
@@ -51,12 +47,9 @@ const ChampionForm = (props) => {
         }
     };
 
-
     const submitHandler = (event) => {
         event.preventDefault();
         //Checks to see if the entered strength and name are empty, if so, it sets them to invalid
-
-
         const champion = {
             hp: enteredStrength,
             name: enteredName,
@@ -66,51 +59,43 @@ const ChampionForm = (props) => {
 
         setEnteredStrength("");
         setStrengthIsValid(false);
-        
-       
-                
-          axios({
-         method: 'post',
-                   url: 'http://localhost:8080/api/champions',
-              data: champion
-                });
 
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/api/champions',
+            data: champion
+        });
         props.onChange();
-               
-
     };
-
 
     return (
         <div>
-        <form className="champForm" onSubmit={verifier}>
-            <div>
-                <h2>Champion Creation</h2>
-                <div >
-                    <label className='labelText'>Champion Name: </label>
-                    <input
-                        className={`nameField ${!nameIsValid ? 'invalid' : ''}`}
-                        type='text'
-                        value={enteredName}
-                        onChange={nameChangeHandler}
-                    ></input>
-                </div>
+            <form className="champForm" onSubmit={verifier}>
                 <div>
-                    <label className='labelText'>HP: </label>
-                    <input
-                        ref={ref}
-                        type='number'
-                        className={`strengthField ${!strengthIsValid ? 'invalid' : ''}`}
-                        min="0"
-                        max="9999"
-                        value={enteredStrength}
-                        onChange={strengthChangeHandler}></input>
+                    <h2>Champion Creation</h2>
+                    <div >
+                        <label className='labelText'>Champion Name: </label>
+                        <input
+                            className={`nameField ${!nameIsValid ? 'invalid' : ''}`}
+                            type='text'
+                            value={enteredName}
+                            onChange={nameChangeHandler}
+                        ></input>
+                    </div>
+                    <div>
+                        <label className='labelText'>HP: </label>
+                        <input
+                            type='number'
+                            className={`strengthField ${!strengthIsValid ? 'invalid' : ''}`}
+                            min="0"
+                            max="9999"
+                            value={enteredStrength}
+                            onChange={strengthChangeHandler}></input>
+                    </div>
                 </div>
-            </div>
-            <button type='submit' >Confirm</button>
-        </form>
-                  </div>
-
+                <button type='submit' >Confirm</button>
+            </form>
+        </div>
     )
 };
 

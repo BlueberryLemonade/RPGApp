@@ -17,37 +17,26 @@ const ChampionEdit = (props) => {
 
     const [nameIsValid, setNameIsValid] = useState(true);
     const [strengthIsValid, setStrengthIsValid] = useState(true);
-
+    const [loading, setLoading] = useState(false);
     const location = useLocation();
     const { id } = location.state;
-
-    const [loading, setLoading] = useState(false);
-
     const navigate = useNavigate();
 
     useEffect(() => {
         setLoading(true);
-
         async function fetchData() {
             const request = await axios.get('http://localhost:8080/api/champions/' + id);
             setLoading(false);
             setEnteredName(request.data.name);
             setEnteredHP(request.data.hp);
-
             return request;
         }
         fetchData();
     }, [id]);
 
-
     if (loading) {
         return <p>Loading...</p>;
     }
-
-
-
-
-
 
     const nameChangeHandler = (event) => {
         const holder = event.target.value;
@@ -77,8 +66,7 @@ const ChampionEdit = (props) => {
             setEnteredName(enteredName.trim());
             setNameIsValid(true);
         }
-
-        
+        //Clean this later 
         enteredHP = enteredHP.toString();
 
         if (enteredHP.trim().length > 0) {
@@ -93,16 +81,10 @@ const ChampionEdit = (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        //Checks to see if the entered strength and name are empty, if so, it sets them to invalid
-
-
         const updatedChampion = {
             name: enteredName,
             hp: enteredHP,
-
         };
-
-
 
         axios({
             method: 'put',
@@ -111,18 +93,7 @@ const ChampionEdit = (props) => {
         })
 
         navigate("/Champions");
-
-
-
-
-
-
-
-
-
-
     };
-
 
     return (
         <div>
