@@ -37,7 +37,7 @@ const ChampionEdit = (props) => {
             return request;
         }
         fetchData();
-    }, []);
+    }, [id]);
 
 
     if (loading) {

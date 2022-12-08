@@ -1,34 +1,45 @@
 import './Champion.css';
 import axios from 'axios';
-//import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+
+
 
 const Champion = (props) => {
 
 
-  
+   
     const clickHandler = () => {
-
-        console.log(props.selected)
-        props.onClick(props.id);
-    }
-
-
-    const deleteHandler = () => {
-        axios.delete("http://localhost:8080/api/champions/" + props.id,)
-        .catch(error => {
-            console.log(error.response)
-        });
-
-        props.onChange();
     
-    }
-  
+        props.onClick(props.id);
+    };
+
+
  
     if(props.selected){
+
+
+        
+    
+      
+    
+    
+        const deleteHandler = () => {
+            axios.delete("http://localhost:8080/api/champions/" + props.id,)
+            .catch(error => {
+                console.log(error.response)
+            });
+    
+            props.onChange();
+        
+        }
+      
+
+
         return(
             <div className={ "selectedChamp" } onClick={clickHandler}>
          <p className="champData">Champion Name: {props.name}    HP: {props.hp}</p>
-         <button className="buttons">Edit</button><button className='buttons' onClick={deleteHandler}>Delete</button>
+         <Link to="edit" state={{id : props.id}}><button className="buttons">Edit</button></Link>
+         <button className='buttons' onClick={deleteHandler}>Delete</button>
     </div>
          
  

@@ -67,7 +67,6 @@ if(loading){
 
 const selectionHandler = (selectionFromList) =>{
 
-  console.log("SELECTION: " + selectionFromList);
   setSelectedChampId(selectionFromList);
 }
 
