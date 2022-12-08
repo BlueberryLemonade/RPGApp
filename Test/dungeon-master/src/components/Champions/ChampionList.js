@@ -23,9 +23,9 @@ const ChampionList = (props) => {
         setChampions(response.data);
       
       }
-      );
+      ).finally(setLoading(false));
   
-      setLoading(false);
+      
       return request;
   } 
   fetchData();
