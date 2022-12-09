@@ -17,22 +17,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-//test
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
 public class MonsterController {
 
-
     @Autowired
     MonsterRepository monsterRepo;
-
 
     @GetMapping("/monsters")
     public ResponseEntity<List<Monster>> getMonsters(){
         try{
-            List<Monster> monsterList = new ArrayList<Monster>();
 
+            List<Monster> monsterList = new ArrayList<Monster>();
             monsterRepo.findAll().forEach(monsterList::add);
 
             if(monsterList.isEmpty()) {
@@ -45,21 +42,18 @@ public class MonsterController {
         }
     }
 
-
     @GetMapping("/monsters/{id}")
     public ResponseEntity<Monster> getMonsterById(@PathVariable("id") int id){
         try{
-
             Optional<Monster> monsterCheck= monsterRepo.findById(id);
-
             if(monsterCheck.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-
             Monster selectedMonster = monsterCheck.get();
 
             return new ResponseEntity<>(selectedMonster, HttpStatus.OK);
         } catch (Exception e){
+
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -71,6 +65,7 @@ public class MonsterController {
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -94,17 +89,10 @@ public class MonsterController {
         }
 
         Monster updatedMonster = updatedMonsterCheck.get();
-
         updatedMonster.setName(monsterDetails.getName());
         updatedMonster.setHp(monsterDetails.getHp());
-
         monsterRepo.save(updatedMonster);
-
-
 
         return ResponseEntity.ok(updatedMonster);
     }
-
-
-
 }

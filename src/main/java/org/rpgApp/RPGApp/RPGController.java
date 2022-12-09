@@ -34,13 +34,10 @@ public class RPGController {
     public ResponseEntity<List<Champion>> getChamps(){
         try{
             List<Champion> champList = new ArrayList<Champion>();
-
             champRepo.findAll().forEach(champList::add);
-
             if(champList.isEmpty()) {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
-
             return new ResponseEntity<>(champList, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -50,15 +47,11 @@ public class RPGController {
     @GetMapping("/champions/{id}")
     public ResponseEntity<Champion> getChampById(@PathVariable("id") int id){
         try{
-
             Optional<Champion> champCheck= champRepo.findById(id);
-
             if(champCheck.isEmpty()){
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
-
             Champion selectedChamp = champCheck.get();
-
             return new ResponseEntity<>(selectedChamp, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -82,7 +75,6 @@ public class RPGController {
         } catch (Exception e){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -93,20 +85,11 @@ public class RPGController {
         if(updatedChampCheck.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
         Champion updatedChamp = updatedChampCheck.get();
-                
         updatedChamp.setName(champDetails.getName());
         updatedChamp.setHp(champDetails.getHp());
-
         champRepo.save(updatedChamp);
-
-
 
         return ResponseEntity.ok(updatedChamp);
     }
-
-
-
-
 }
