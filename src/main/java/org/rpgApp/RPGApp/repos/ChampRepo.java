@@ -1,5 +1,6 @@
-package org.rpgApp.RPGApp;
+package org.rpgApp.RPGApp.repos;
 
+import org.rpgApp.RPGApp.models.Champion;
 import org.springframework.data.repository.CrudRepository;
 
 

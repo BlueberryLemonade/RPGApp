@@ -13,22 +13,24 @@ const ChampionMenu = props => {
   const [loading, setLoading] = useState(false);
   const [updated, setUpdated] = useState(false);
 
+  
+  
   useEffect(() => {
     setLoading(true);
-
     async function fetchData() {
-      const request = await axios.get(fetchURL)
-        .then(response => {
-          setChampions(response.data);
-
-        })
-        .then(setUpdated(false))
-        .finally(setLoading(false));
-
-      return request;
+    const request = await axios.get(fetchURL)
+    .then(response => {
+      setChampions(response.data);
+    
     }
-    fetchData();
-  }, [updated]);
+    );
+    setLoading(false);
+    setUpdated(false);
+    return request;
+} 
+fetchData();
+}, [updated]);
+
 
   const changeHandler = () => {
     setUpdated(true);
@@ -48,11 +50,11 @@ const ChampionMenu = props => {
 
     if (loading) {
       return <p>Loading...</p>
-    }
+    };
 
     const selectionHandler = (selectionFromList) => {
       setSelectedChampId(selectionFromList);
-    }
+    };
 
     return (
       <div>

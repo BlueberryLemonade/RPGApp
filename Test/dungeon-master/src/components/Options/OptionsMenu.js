@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const OptionsMenu = () => {
 
-    const options = ["Campaigns", "Monsters", "Champions", "Dice", "Arena"];
+    const options = ["Campaigns", "Monsters", "Dice", "Arena"];
     const Options = () => {
 
    return (

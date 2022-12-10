@@ -6,7 +6,7 @@ import DiceMenu from '../Dice/DiceMenu';
 import CampaignCreator from '../Campaigns/CampaignCreator';
 import {Route, Routes} from 'react-router-dom';
 import OptionsMenu from "../Options/OptionsMenu";
-import ChampionForm from '../Champions/ChampionForm';
+//import ChampionForm from '../Champions/ChampionForm';
 import ChampionEdit from '../Champions/ChampionEdit';
 import MonsterEdit from '../Monsters/MonsterEdit';
 
@@ -24,7 +24,7 @@ const Navigator = () => {
   <Route path="/Champions/edit" element={<ChampionEdit />} />
   <Route path="/Dice" element={<DiceMenu />} />
   <Route path="/Arena" element={<ArenaMenu  />} />
-  <Route path="/Campaigns/" element={<CampaignMenu  /> } />
+  <Route path="/Campaigns/*" element={<CampaignMenu  /> } />
   <Route path="/Campaigns/Create" element={<CampaignCreator  />} />
   
   </Routes>

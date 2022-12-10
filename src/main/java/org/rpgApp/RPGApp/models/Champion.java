@@ -1,4 +1,4 @@
-package org.rpgApp.RPGApp;
+package org.rpgApp.RPGApp.models;
 
 import javax.persistence.*;
 

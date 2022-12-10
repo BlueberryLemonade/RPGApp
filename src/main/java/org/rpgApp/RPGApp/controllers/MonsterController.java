@@ -1,17 +1,12 @@
-package org.rpgApp.RPGApp;
+package org.rpgApp.RPGApp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import org.rpgApp.RPGApp.Monster;
-import org.rpgApp.RPGApp.MonsterRepository;
-
-import org.rpgApp.RPGApp.ChampRepo;
-import org.rpgApp.RPGApp.Champion;
+import org.rpgApp.RPGApp.models.Monster;
+import org.rpgApp.RPGApp.repos.MonsterRepository;
 
 import java.util.ArrayList;
 import java.util.List;

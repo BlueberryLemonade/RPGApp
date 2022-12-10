@@ -1,5 +1,6 @@
-package org.rpgApp.RPGApp;
+package org.rpgApp.RPGApp.repos;
 
+import org.rpgApp.RPGApp.models.Monster;
 import org.springframework.data.repository.CrudRepository;
 
 
