@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const CampaignCreator = (props) => {
 
@@ -18,10 +19,17 @@ const CampaignCreator = (props) => {
     const saveCampaign = () => {
         const createdCampaign = {
             name: enteredName,
-            description: enteredDesc
+            description: enteredDesc,
+            monsterdb: null,
+            champddb: null
         };
 
-        props.onSave(createdCampaign);
+
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/api/campaigns',
+            data: createdCampaign
+        });
     }
     return (
         <div>

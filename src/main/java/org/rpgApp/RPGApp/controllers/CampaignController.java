@@ -1,6 +1,7 @@
 package org.rpgApp.RPGApp.controllers;
 
 import org.rpgApp.RPGApp.models.Campaign;
+import org.rpgApp.RPGApp.models.Champion;
 import org.rpgApp.RPGApp.repos.CampaignRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,5 +38,15 @@ public class CampaignController {
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PostMapping("/campaigns")
+    public ResponseEntity<HttpStatus> addCamapign(@RequestBody Campaign campaign){
+        try{
+            campaignRepo.save(campaign);
+        } catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

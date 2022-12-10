@@ -1,19 +1,23 @@
 import CampaignCreator from "./CampaignCreator";
 import { Routes, Route, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const CampaignMenu = (props) => {
 
-    const fetchURL = "http://localhost:8080/campaigns";
+    const fetchURL = "http://localhost:8080/api/campaigns";
 
+
+    const [loading, setLoading] = useState(false);
+    const [updated, setUpdated] = useState(false);
     const [campaigns, setCampaigns] = useState("");
-/*
+
     useEffect(() => {
     
         async function fetchData() {
           const request = await axios.get(fetchURL)
             .then(response => {
-              setChampions(response.data);
+              setCampaigns(response.data);
     
             })
             .then(setUpdated(false))
@@ -22,8 +26,9 @@ const CampaignMenu = (props) => {
           return request;
         }
         fetchData();
-      }, []);
-*/
+      }, [updated]);
+
+
 
     const MenuGeneration = () => {
         if (campaigns.length === 0) {
@@ -35,6 +40,10 @@ const CampaignMenu = (props) => {
 
             </div>
             )
+        }
+
+        if (loading) {
+            return <p>Loading campaigns...</p>
         }
 
         return (
