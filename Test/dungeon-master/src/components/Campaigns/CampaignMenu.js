@@ -50,7 +50,7 @@ const CampaignMenu = (props) => {
             <div>
                 
                 {campaigns.map((campaign) => (
-                    <Link to="/"><div>
+                    <Link key={campaign.id} to="/campaigns/select" state={{id: campaign.name}}><div>
                         <p>Name: {campaign.name}</p>
                         <p>Description: {campaign.description}</p>
                     </div>

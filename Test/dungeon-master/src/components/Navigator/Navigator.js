@@ -9,6 +9,7 @@ import OptionsMenu from "../Options/OptionsMenu";
 //import ChampionForm from '../Champions/ChampionForm';
 import ChampionEdit from '../Champions/ChampionEdit';
 import MonsterEdit from '../Monsters/MonsterEdit';
+import CampaignScreen from '../Campaigns/CampaignScreen';
 
 const Navigator = () => {
     
@@ -25,6 +26,7 @@ const Navigator = () => {
   <Route path="/Dice" element={<DiceMenu />} />
   <Route path="/Arena" element={<ArenaMenu  />} />
   <Route path="/Campaigns/*" element={<CampaignMenu  /> } />
+  <Route path="Campaigns/select" element={<CampaignScreen />} />
   <Route path="/Campaigns/Create" element={<CampaignCreator  />} />
   
   </Routes>
